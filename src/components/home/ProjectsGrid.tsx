@@ -39,7 +39,7 @@ export function ProjectsGrid() {
               <div className="absolute inset-x-0 bottom-0 p-8 flex flex-col justify-end transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
                 <div className="mb-4 flex items-center gap-2">
                   <span className="px-3 py-1 bg-primary text-primary-foreground text-[10px] font-black uppercase tracking-widest rounded-sm shadow-lg">
-                    {project.category}
+                    {project.type}
                   </span>
                 </div>
                 <h3 className="text-2xl font-black uppercase tracking-tight text-foreground mb-2 drop-shadow-md">
