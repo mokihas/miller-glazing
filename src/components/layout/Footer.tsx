@@ -27,15 +27,22 @@ export function Footer() {
   const currentYear = new Date().getFullYear()
 
   return (
-    <footer className="bg-foreground text-muted py-16 border-t border-border">
-      <div className="container grid grid-cols-1 gap-12 md:grid-cols-2 lg:grid-cols-5 mb-16">
+    <footer className="bg-[#050505] text-muted-foreground py-16 border-t border-border relative overflow-hidden">
+      <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-5 pointer-events-none"></div>
+      
+      <div className="container relative z-10 grid grid-cols-1 gap-12 md:grid-cols-2 lg:grid-cols-5 mb-16">
         
         {/* Column 1: Brand & GBP Info */}
         <div className="lg:col-span-2 space-y-6">
-          <span className="text-2xl font-bold tracking-[0.1em] uppercase text-white">
-            {siteConfig.businessName !== "[BUSINESS NAME]" ? siteConfig.businessName : "GlazeCorp"}
-          </span>
-          <p className="text-sm text-gray-400 max-w-sm leading-relaxed">
+          <div className="flex items-center gap-2">
+             <div className="w-8 h-8 bg-primary rounded-md flex items-center justify-center">
+                <span className="text-primary-foreground font-black">M</span>
+             </div>
+             <span className="text-xl font-black tracking-tighter uppercase text-foreground">
+               Miller<span className="text-primary">Glazing</span>
+             </span>
+          </div>
+          <p className="text-sm text-muted-foreground max-w-sm leading-relaxed font-medium">
             {siteConfig.description}
           </p>
           
@@ -47,7 +54,7 @@ export function Footer() {
                  href={profile.url}
                  target="_blank"
                  rel="noopener noreferrer"
-                 className="w-10 h-10 rounded-full border border-gray-800 flex items-center justify-center text-gray-400 hover:text-white hover:border-secondary hover:bg-secondary/10 transition-all duration-300"
+                 className="w-10 h-10 rounded-full border border-border flex items-center justify-center text-muted-foreground hover:text-primary hover:border-primary hover:bg-primary/10 transition-all duration-300"
                  aria-label={profile.platform}
                >
                  {getSocialIcon(profile.platform)}
@@ -57,7 +64,7 @@ export function Footer() {
 
           {/* Trust Badges */}
           {siteConfig.trustBadges && siteConfig.trustBadges.length > 0 && (
-            <div className="flex flex-wrap items-center gap-4 pt-6 border-t border-gray-800/50">
+            <div className="flex flex-wrap items-center gap-4 pt-6 border-t border-border/50">
               {siteConfig.trustBadges.map((badge, i) => (
                 <div key={i} className="flex items-center gap-2">
                   <img src={badge.image} alt={badge.name} className="h-10 object-contain grayscale hover:grayscale-0 transition-all" />
@@ -69,23 +76,23 @@ export function Footer() {
 
         {/* Column 2: Navigation */}
         <div className="space-y-6">
-          <h3 className="text-xs font-bold tracking-[0.2em] uppercase text-secondary">Company</h3>
-          <ul className="space-y-4 text-sm font-medium text-gray-400">
-            <li><Link href="/about" className="hover:text-white transition-colors">About Us</Link></li>
-            <li><Link href="/services" className="hover:text-white transition-colors">Our Services</Link></li>
-            <li><Link href="/projects" className="hover:text-white transition-colors">Portfolio</Link></li>
-            <li><Link href="/faqs" className="hover:text-white transition-colors">FAQs</Link></li>
-            <li><Link href="/contact" className="hover:text-white transition-colors">Contact</Link></li>
+          <h3 className="text-[10px] font-black tracking-widest uppercase text-primary">Company</h3>
+          <ul className="space-y-4 text-sm font-bold uppercase tracking-widest text-muted-foreground">
+            <li><Link href="/about" className="hover:text-foreground transition-colors">About Us</Link></li>
+            <li><Link href="/services" className="hover:text-foreground transition-colors">Our Services</Link></li>
+            <li><Link href="/projects" className="hover:text-foreground transition-colors">Portfolio</Link></li>
+            <li><Link href="/faqs" className="hover:text-foreground transition-colors">FAQs</Link></li>
+            <li><Link href="/contact" className="hover:text-foreground transition-colors">Contact</Link></li>
           </ul>
         </div>
 
         {/* Column 3: Areas We Serve */}
         <div className="space-y-6">
-          <h3 className="text-xs font-bold tracking-[0.2em] uppercase text-secondary">Service Areas</h3>
-          <ul className="space-y-4 text-sm font-medium text-gray-400">
+          <h3 className="text-[10px] font-black tracking-widest uppercase text-primary">Service Areas</h3>
+          <ul className="space-y-4 text-sm font-bold uppercase tracking-widest text-muted-foreground">
             {siteConfig.serviceAreas.map((area) => (
               <li key={area.slug}>
-                <Link href={`/areas/${area.slug}`} className="hover:text-white transition-colors">
+                <Link href={`/areas/${area.slug}`} className="hover:text-foreground transition-colors">
                   {area.name}
                 </Link>
               </li>
@@ -95,21 +102,21 @@ export function Footer() {
 
         {/* Column 4: Contact */}
         <div className="space-y-6">
-          <h3 className="text-xs font-bold tracking-[0.2em] uppercase text-secondary">Contact</h3>
-          <ul className="space-y-4 text-sm font-medium text-gray-400">
+          <h3 className="text-[10px] font-black tracking-widest uppercase text-primary">Contact</h3>
+          <ul className="space-y-4 text-sm font-bold uppercase tracking-widest text-muted-foreground">
             <li>
-              <a href={`tel:${siteConfig.phone}`} className="hover:text-white transition-colors flex items-center gap-3">
-                 <Phone className="w-4 h-4 text-gray-600" /> {siteConfig.phone}
+              <a href={`tel:${siteConfig.phone}`} className="hover:text-primary transition-colors flex items-center gap-3">
+                 <Phone className="w-4 h-4 text-primary" /> {siteConfig.phone}
               </a>
             </li>
             <li>
-              <a href={`mailto:${siteConfig.email}`} className="hover:text-white transition-colors flex items-center gap-3">
-                 <Mail className="w-4 h-4 text-gray-600" /> {siteConfig.email}
+              <a href={`mailto:${siteConfig.email}`} className="hover:text-primary transition-colors flex items-center gap-3">
+                 <Mail className="w-4 h-4 text-primary" /> {siteConfig.email}
               </a>
             </li>
-            <li className="flex items-start gap-3 text-gray-400">
-               <MapPin className="w-4 h-4 text-gray-600 shrink-0 mt-0.5" />
-               <span>
+            <li className="flex items-start gap-3">
+               <MapPin className="w-4 h-4 text-primary shrink-0 mt-0.5" />
+               <span className="leading-relaxed">
                  {siteConfig.streetAddress}<br />
                  {siteConfig.city}, {siteConfig.state} {siteConfig.postalCode}
                </span>
@@ -120,20 +127,20 @@ export function Footer() {
       </div>
 
       {/* GBP Verification / Legal Footer */}
-      <div className="container pt-8 border-t border-gray-900 flex flex-col md:flex-row items-start md:items-center justify-between text-[11px] text-gray-600 uppercase tracking-widest gap-6">
+      <div className="container relative z-10 pt-8 border-t border-border flex flex-col md:flex-row items-start md:items-center justify-between text-[10px] text-muted-foreground font-bold uppercase tracking-widest gap-6">
         
         <div className="flex flex-col space-y-2">
            <p>&copy; {currentYear} {siteConfig.legalBusinessName}. All rights reserved.</p>
            {/* Essential info for GBP / Trust verification */}
-           <p className="text-gray-500">
-             Registered Address: {siteConfig.streetAddress}, {siteConfig.city}, {siteConfig.state} {siteConfig.postalCode} 
-             {siteConfig.companyRegistrationNumber && siteConfig.companyRegistrationNumber !== "CRN_PLACEHOLDER" && ` | Registration No: ${siteConfig.companyRegistrationNumber}`}
+           <p className="opacity-50">
+             Registered: {siteConfig.streetAddress}, {siteConfig.city}, {siteConfig.state} {siteConfig.postalCode} 
+             {siteConfig.companyRegistrationNumber && siteConfig.companyRegistrationNumber !== "CRN_PLACEHOLDER" && ` | Reg No: ${siteConfig.companyRegistrationNumber}`}
            </p>
         </div>
         
         <div className="flex space-x-6">
-          <Link href="/privacy-policy" className="hover:text-gray-300 transition-colors">Privacy Policy</Link>
-          <Link href="/terms-and-conditions" className="hover:text-gray-300 transition-colors">Terms & Conditions</Link>
+          <Link href="/privacy-policy" className="hover:text-foreground transition-colors">Privacy Policy</Link>
+          <Link href="/terms-and-conditions" className="hover:text-foreground transition-colors">Terms & Conditions</Link>
         </div>
 
       </div>
